@@ -3,10 +3,10 @@ var constraints = { video: { facingMode: "environment" }, audio: false };
 var track = null;
 
 // Define constants
-const cameraView = document.querySelector("#camera--view"),
-    cameraOutput = document.querySelector("#camera--output"),
-    cameraSensor = document.querySelector("#camera--sensor"),
-    cameraTrigger = document.querySelector("#camera--trigger");
+const cameraView = document.querySelector("#camera_view");
+const cameraOutput = document.querySelector("#camera_output");
+const cameraSensor = document.querySelector("#camera_sensor");
+const cameraTrigger = document.querySelector("#camera_trigger");
 
 // Access the device camera and stream to cameraView
 function cameraStart() {
@@ -37,12 +37,12 @@ cameraTrigger.onclick = function() {
 window.addEventListener("load", cameraStart, false);
 
 
-
-/* TESTING SEND THE SELECTED IMAGE */
+/* TESTING SUBMIT THE SELECTED IMAGE */
 $(document).ready(function() {
-    var cameraTriggerBtn = $("#camera--trigger");
-    var cameraOutputData = $("#camera--output");
-    var imageTriggerBtn = $("#image--trigger")
+    var cameraTriggerBtn = $("#camera_trigger");
+    var cameraOutputData = $("#camera_output");
+    var imageTriggerBtn = $("#image_trigger")
+    var submittedBtn = $("#submitted");
 
     cameraTriggerBtn.click(function () {
         imageTriggerBtn.show();
@@ -52,6 +52,8 @@ $(document).ready(function() {
         $.post("/submit", {
             image_data: cameraOutputData.prop('src')
         }, function(data, status) {
+            //imageTriggerBtn.hide();
+            submittedBtn.show().delay(500).fadeOut();
             console.table(status);
             console.table(data);
         });
@@ -60,58 +62,3 @@ $(document).ready(function() {
 });
 
 
-// const video = document.getElementById('video');
-// const button = document.getElementById('button');
-// const select = document.getElementById('select');
-// let currentStream;
-
-// function stopMediaTracks(stream) {
-//   stream.getTracks().forEach(track => {
-//     track.stop();
-//   });
-// }
-
-// function gotDevices(mediaDevices) {
-//   select.innerHTML = '';
-//   select.appendChild(document.createElement('option'));
-//   let count = 1;
-//   mediaDevices.forEach(mediaDevice => {
-//     if (mediaDevice.kind === 'videoinput') {
-//       const option = document.createElement('option');
-//       option.value = mediaDevice.deviceId;
-//       const label = mediaDevice.label || `Camera ${count++}`;
-//       const textNode = document.createTextNode(label);
-//       option.appendChild(textNode);
-//       select.appendChild(option);
-//     }
-//   });
-// }
-
-// button.addEventListener('click', event => {
-//   if (typeof currentStream !== 'undefined') {
-//     stopMediaTracks(currentStream);
-//   }
-//   const videoConstraints = {};
-//   if (select.value === '') {
-//     videoConstraints.facingMode = 'environment';
-//   } else {
-//     videoConstraints.deviceId = { exact: select.value };
-//   }
-//   const constraints = {
-//     video: videoConstraints,
-//     audio: false
-//   };
-//   navigator.mediaDevices
-//     .getUserMedia(constraints)
-//     .then(stream => {
-//       currentStream = stream;
-//       video.srcObject = stream;
-//       return navigator.mediaDevices.enumerateDevices();
-//     })
-//     .then(gotDevices)
-//     .catch(error => {
-//       console.error(error);
-//     });
-// });
-
-// navigator.mediaDevices.enumerateDevices().then(gotDevices);

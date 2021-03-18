@@ -24,7 +24,7 @@ router.post('/submit', urlencodedParser, function(req, res) {
         image_data: image_data
     }).then((response) => {
         console.log(response.data);
-        res.json({'image received': true});
+        res.json({status: 200, data: 'image received'});
     }, (error) => {
         console.log(error);
     });
