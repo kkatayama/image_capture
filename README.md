@@ -26,3 +26,9 @@ npm start
 ```
 
 Live server is running at [https://capture.hopto.org](https://capture.hopto.org)
+
+#### Notes
+* When the `Submit picture` button is pressed, the base64 image data string is sent to the NodeJS by a jQuery POST request
+* The NodeJS server decodes the images to a locally stored capture.jpg file for testing purposes
+* Once the NodeJS server receives the base64 image data, the server then sends the data to a PHP server via a POST request to [https://classify.hopto.org](https://classify.hopto.org)
+* Source code for the PHP server is located at: [https://github.com/kkatayama/classify_image](https://github.com/kkatayama/classify_image)
