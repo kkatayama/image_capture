@@ -19,8 +19,15 @@ router.post('/submit', urlencodedParser, function(req, res) {
     fs.writeFile('capture.jpg', image_data.replace(/^data:image\/jpeg;base64,/, ""), 'base64', function (err) {
         console.log(err);
     });
-    
-    res.json({'image received': true});
+
+    axios.post('https://classify.hopto.org', {
+        image_data: image_data
+    }).then((response) => {
+        console.log(response.data);
+        res.json({'image received': true});
+    }, (error) => {
+        console.log(error);
+    });
 })
 
 var server = router.listen(3000, "0.0.0.0", function() {
