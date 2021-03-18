@@ -10,7 +10,7 @@ A NodeJS App that captures an image from a device's camera and delivers it to an
 > `Submit picture` - send the base64 string of the image to another web server for decoding and file extraction.
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/kkatayama/image_capture/main/public/demo.gif" width="50%" height="50%">
+    <img src="https://raw.githubusercontent.com/kkatayama/image_capture/main/public/demo.gif">
 </p>
 
 ## Running
