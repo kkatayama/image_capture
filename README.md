@@ -9,7 +9,9 @@ A NodeJS App that captures an image from a device's camera and delivers it to an
 > `Take a picture` - freeze the video stream, take a screenshot and render the base64 image.
 > `Submit picture` - send the base64 string of the image to another web server for decoding and file extraction.
 
-<img src="https://raw.githubusercontent.com/kkatayama/image_capture/main/public/demo.gif" width="50%" height="50%">
+<p align="center">
+    <img src="https://raw.githubusercontent.com/kkatayama/image_capture/main/public/demo.gif" width="50%" height="50%">
+</p>
 
 ## Running
 
